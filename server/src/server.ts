@@ -46,10 +46,19 @@ const app = express();
 
 const httpServer = createServer(app);
 
+const allowedOrigins = [
+  "http://localhost:5173",
+  "http://localhost:5174",
+  "http://192.168.0.168:5173",
+  "http://192.168.0.168:5174",
+  "https://fortune-chat-frontend.onrender.com",
+];
+
 const io = new SocketIOServer(httpServer, {
   cors: {
-    origin: "*",
+    origin: allowedOrigins,
     methods: ["GET", "POST", "PATCH", "PUT", "DELETE"],
+    credentials: true,
   },
 });
 
@@ -84,12 +93,9 @@ const PORT = 5000;
 
 app.use(
   cors({
-    origin: [
-      "http://localhost:5173",
-      "http://localhost:5174",
-      "http://192.168.0.168:5173",
-      "http://192.168.0.168:5174",
-    ],
+    origin: allowedOrigins,
+    methods: ["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"],
+    allowedHeaders: ["Content-Type", "Authorization"],
     credentials: true,
   })
 );
