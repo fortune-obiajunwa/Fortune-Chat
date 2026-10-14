@@ -541,10 +541,7 @@ function Chat({ onOpenWorldChat }: ChatProps) {
             profilePicture: otherUser.profilePicture,
           };
         })
-        .filter(
-          (conversation): conversation is Conversation =>
-            conversation !== null
-        );
+        .filter((conversation) => conversation !== null) as Conversation[];
 
       setConversations(formattedConversations);
     } catch {
