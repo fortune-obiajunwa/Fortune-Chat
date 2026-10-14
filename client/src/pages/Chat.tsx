@@ -65,7 +65,7 @@ interface ChatProps {
   onOpenWorldChat: () => void;
 }
 
-const SERVER_URL = "http://localhost:5000";
+import { API_BASE_URL as SERVER_URL } from "../config/api";
 
 /*
 =========================================

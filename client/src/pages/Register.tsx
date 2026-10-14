@@ -1,4 +1,6 @@
 import { useState } from "react";
+import { API_BASE_URL } from '../config/api';
+
 
 interface RegisterProps {
   onLogin: () => void;
@@ -105,7 +107,8 @@ function Register({
 
     try {
       const response = await fetch(
-        "http://localhost:5000/api/auth/register",
+        `${API_BASE_URL}/api/auth/register`,
+
         {
           method: "POST",
           headers: {

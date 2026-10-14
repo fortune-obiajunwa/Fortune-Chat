@@ -76,7 +76,7 @@ interface WorldChatProps {
   onBackToChat: () => void;
 }
 
-const API_URL = "http://localhost:5000";
+import { API_BASE_URL as API_URL } from "../config/api";
 
 const countries: Country[] = [
   {
