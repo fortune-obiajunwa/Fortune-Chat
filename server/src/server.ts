@@ -18,7 +18,7 @@ import jwt from "jsonwebtoken";
 
 import connectDB from "./config/db.js";
 
-import User from "./models/user.js";
+import User from "./models/User.js";
 import Conversation from "./models/conversation.js";
 import Message from "./models/message.js";
 
@@ -1926,10 +1926,13 @@ app.get(
     res: Response
   ) => {
     try {
-      const country =
-        getWorldCountry(
-          req.params.countryCode
-        );
+      const countryCode = Array.isArray(req.params.countryCode)
+  ? req.params.countryCode[0]
+  : req.params.countryCode;
+
+      const country = getWorldCountry(
+     typeof countryCode === "string" ? countryCode : ""
+     );
 
       if (!country) {
         return res.status(400).json({
