@@ -1,0 +1,11 @@
+# Frontend ignores
+client/node_modules/
+client/dist/
+client/build/
+client/.next/
+
+# Backend ignores
+server/node_modules/
+server/dist/
+server/out/
+server/*.js
